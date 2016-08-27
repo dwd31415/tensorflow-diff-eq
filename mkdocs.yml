@@ -1,3 +1,5 @@
-site_name: My Docs
+site_name: Differential Equations for TensorFlow
 theme: 'material'
 
+repo_name: 'GitHub'
+repo_url: 'https://github.com/dwd31415/tensorflow-diff-eq'
