@@ -10,10 +10,10 @@ class DifferentialQuantity():
 
     def d(self,grade):
         if not self.is_defined:
-            return Exception("Quantity is not yet defined.")
+            raise Exception("Quantity is not yet defined.")
 
         if grade < len(self.derivatives):
-            return Exception("Requested derivative not defined.")
+            raise Exception("Requested derivative not defined.")
 
         return self.derivatives[grade]
 
@@ -38,10 +38,10 @@ class DifferentialEquation():
 
     def define_quantity(self,quantity,initial_value,initial_value_order,definition,definition_order):
         if not quantity.eq == self:
-            return Exception("The supplied quantity is not part of this differential equation.")
+            raise Exception("The supplied quantity is not part of this differential equation.")
 
         if initial_value_order <= definition_order:
-            return Exception("The initial value has to be assigned to a higher derivative than is being defined.")
+            raise Exception("The initial value has to be assigned to a higher derivative than is being defined.")
         derivatives = []
         for n in range(definition_order - 1):
             dx = None
@@ -51,6 +51,20 @@ class DifferentialEquation():
                 dx = tf.Variable(np.zeros(np.size(initial_value)))
             derivatives.append(dx)
         derivatives.append(definition)
+
+    def generate_simulate_operation(self,dt,step_size):
+        # Are all quantities defined?
+        for quantity in self.quantities:
+            if not quantity.is_defined:
+                raise Exception("All Quantities, which belong to this equation, must be defined in order for the simulate operation to be created.")
+
+        updates = []
+        for quantity in self.quantities:
+            for n in range(len(quantity.derivatives)-1):
+                updates.append(quantity.derivatives[n].assign(quantity.derivatives[n] + dt * (quantity.derivatives[n + 1])))
+        return tf.group(updates)
+
+                
 
 
 
