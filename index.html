@@ -96,6 +96,16 @@
       </div>
     </div>
     
+      
+      <div class="button button-twitter" role="button" aria-label="Twitter">
+        <a href="https://twitter.com/adrian_dwd" title="@adrian_dwd on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
+      </div>
+    
+    
+      
+      <div class="button button-github" role="button" aria-label="GitHub">
+        <a href="https://github.com/dwd31415" title="@dwd31415 on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+      </div>
     
     <div class="button button-search" role="button" aria-label="Search">
       <label class="toggle-button icon icon-search" title="Search" for="toggle-search"></label>
@@ -174,11 +184,54 @@
         
       
       
+        <ul>
+          
+            <li class="anchor">
+              <a title="Why TensorFlow?" href="#why-tensorflow">
+                Why TensorFlow?
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Installation" href="#installation">
+                Installation
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Basic Usage" href="#basic-usage">
+                Basic Usage
+              </a>
+            </li>
+          
+        </ul>
+      
     
   </li>
 
           
         </ul>
+        
+          <hr>
+          <span class="section">The author</span>
+          <ul>
+            
+              
+              <li>
+                <a href="https://twitter.com/adrian_dwd" target="_blank" title="@adrian_dwd on Twitter">
+                  @adrian_dwd on Twitter
+                </a>
+              </li>
+            
+            
+              
+              <li>
+                <a href="https://github.com/dwd31415" target="_blank" title="@dwd31415 on GitHub">
+                  @dwd31415 on GitHub
+                </a>
+              </li>
+            
+          </ul>
         
       </div>
     </div>
@@ -189,13 +242,74 @@
         <div class="wrapper">
           
           <h1 id="welcome-to-tensorflow-diff-eq">Welcome to tensorflow-diff-eq</h1>
-<p>A python package for simulating differential equations using TensorFlow.
-<img alt="Lorenz Attractor" src="https://github.com/dwd31415/tensorflow-diff-eq/blob/master/examples/lorenz_attractor_animated.gif?raw=true" /></p>
-<h1 id="installation">Installation</h1>
-<p>This package is still in an early stage of development, therefore it is not yet 
+<p>A python package for simulating differential equations using <a href="https://www.tensorflow.org/">TensorFlow</a>.</p>
+<p><img alt="Lorenz Attractor" src="https://github.com/dwd31415/tensorflow-diff-eq/blob/master/examples/lorenz_attractor_animated.gif?raw=true" /></p>
+<h2 id="why-tensorflow">Why TensorFlow?</h2>
+<p><a href="https://www.tensorflow.org/">TensorFlow</a> is an open source library for numerical computation(mostly in machine learning), that allows one to specify computations using abstract dataflow graphs. The library then runs them on the GPU or CPU, this makes TensorFlow great for simulating differential equations. GPUs can perform many computation much faster than CPUs, using this library one can harness this performance for simulating differential equations. The simulation can run on the GPU or the CPU without any change in code.</p>
+<h2 id="installation">Installation</h2>
+<p>This package is still in an early stage of development, therefore it is not yet
 available from PyPI. To install it, just clone this repository and run:</p>
 <p><code>python3 setup.py install</code></p>
+<h2 id="basic-usage">Basic Usage</h2>
+<p>This package allows you to symbolically define differential equation and
+simulate them using TensorFlow, this allows one to use the GPU for the actual simulation without ever using C
+or CUDA. All important classes and functions are in the <code>diff_eq</code> namespace, therefore
+this is best way to import tensorflow-diff-eq:</p>
+<div class="code"><pre><span class="kn">import</span> <span class="nn">tensorflow_diff_eq.diff_eq</span> <span class="k">as</span> <span class="nn">diff_eq</span>
+</pre></div>
+
+
+<p>The first step in defining a differential equation is to create a <code>DifferentialEquation</code>
+object:</p>
+<div class="code"><pre><span class="n">eq</span> <span class="o">=</span> <span class="n">diff_eq</span><span class="o">.</span><span class="n">DifferentialEquation</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Then you must specify how many quantities will be involved in your differential equation.</p>
+<h3 id="example">Example:</h3>
+<div class="code"><pre><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="o">=</span> <span class="n">eq</span><span class="o">.</span><span class="n">generate_quantities</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Once you have the references for these quantities you can define them using the
+<code>define_quantity</code> function.</p>
+<h3 id="example_1">Example:</h3>
+<div class="code"><pre><span class="n">eq</span><span class="o">.</span><span class="n">define_quantity</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)(</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">eq</span><span class="o">.</span><span class="n">define_quantity</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)(</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">eq</span><span class="o">.</span><span class="n">define_quantity</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)(</span><span class="o">-</span><span class="n">k</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">m</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+
+
+<p>The first argument to this function is the quantity which is being defined, the second parameter is an initial value and the third parameter is the grade of the derivative, that shall be
+initialized with it. All other derivatives are initialized to zero of the respective datatype.
+The forth argument is the grade of the "definition" derivative, this definition has the form
+<script type="math/tex; mode=display">\frac{d^nx}{dt^n} = \phi,</script>
+where <script type="math/tex">n</script> is the grade supplied as the forth argument and <script type="math/tex">\phi</script> is any expression
+involving previously defined quantities or <script type="math/tex">x</script>, which is the quantity that is currently being defined. Arbitrary <script type="math/tex">n^{th}</script>-grade derivatives of the quantities are accessed using <code>.d(n)</code>, the quantity itself has to be accessed using <code>.d(0)</code>.</p>
+<p>Once you have supplied the system with the differential equation in this fashion, you can start the simulation. In order to do this, you must generate a tensorflow operation that runs
+the simulation. Such an operation can be generated using <code>eq.generate_simulate_operation</code> and can then be run using a tensorflow session. The function has one argument which is the <script type="math/tex">\Delta t</script> that will be used for the simulation.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please make sure you run the <strong>tf.initialize_all_variables()</strong> operation after defining the quantities involved in your differential equation.</p>
+</div>
+<h3 id="example_2">Example:</h3>
+<div class="code"><pre><span class="c"># Start tensorflow</span>
+<span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+<span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">initialize_all_variables</span><span class="p">())</span>
+<span class="n">simulate_op</span> <span class="o">=</span> <span class="n">eq</span><span class="o">.</span><span class="n">generate_simulate_operation</span><span class="p">(</span><span class="mf">0.005</span><span class="p">)</span>
+</pre></div>
+
+
+<p>At this point you can just do <code>sess.run(simulate_op)</code> to simulate, if you want to access
+any quantity at any time you can run <code>sess.run(x.d(0))</code>, where <script type="math/tex">x</script> is the quantity that you want to know the value of.</p>
+<p>If you wish want to know more about how this package works, have a look at the example it the <a href="https://github.com/dwd31415/tensorflow-diff-eq/tree/master/examples">examples folder</a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>It is quite handy to define a <em>t</em> quantity and set it's first derivative to one in order to keep track of the "time". The library does not do this for you.</p>
+</div>
           <aside class="copyright" role="note">
+            
+              Copyright (c) 2016 Adrian Philipp Dawid &ndash;
             
             Documentation built with
             <a href="http://www.mkdocs.org" target="_blank">MkDocs</a>
@@ -226,6 +340,8 @@ available from PyPI. To install it, just clone this repository and run:</p>
       var repo_id  = 'dwd31415/tensorflow-diff-eq';
     </script>
     <script src="./assets/javascripts/application-997097ee0c.js"></script>
+    
+      <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     
   </body>
