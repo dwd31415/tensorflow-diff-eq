@@ -14,7 +14,7 @@ rho = 28.0
 beta = 8.0/3.0
 
 # The Lorenz equations
-eq.define_quantity(xyz,np.array([2.0, 3.0, 4.0]), 0, 1)(tf.pack([sigma * (xyz.d(0)[1]-xyz.d(0)[0]),
+eq.define_quantity(xyz,np.array([2.1, 3.2, 4.4]), 0, 1)(tf.pack([sigma * (xyz.d(0)[1]-xyz.d(0)[0]),
                                                                     xyz.d(0)[0] * (rho - xyz.d(0)[2]) - xyz.d(0)[1],
                                                                     xyz.d(0)[0]*xyz.d(0)[1] - beta * xyz.d(0)[2]]))
 
@@ -36,4 +36,4 @@ for i in tqdm.tqdm(range(2000)):
         sess.run(simulate_op)
         ts[i+1] = ts[i] + 0.01
 
-np.save("lorenz_sim_data", xs, ys, zs)
+np.save("lorenz_sim_data", [xs, ys, zs])
