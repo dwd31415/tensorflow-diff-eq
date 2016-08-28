@@ -1,4 +1,4 @@
-import diff_eq
+import tensorflow_diff_eq.diff_eq as diff_eq
 import tensorflow as tf
 import numpy as np
 import matplotlib as mpl
