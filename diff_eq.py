@@ -60,7 +60,7 @@ class DifferentialEquation():
 
         return define_op
 
-    def generate_simulate_operation(self, dt):
+    def generate_simulate_operation(self, dt, steps=0):
         # Are all quantities defined?
         for quantity in self.quantities:
             if not quantity.is_defined:
@@ -73,6 +73,15 @@ class DifferentialEquation():
         updates_combined = tf.tuple(updates)
         return updates_combined
 
+"""
+U = tf.Variable(0.0)
+o1 = U.assign_add(tf.exp(-U))
+i = tf.constant(0)
+vars = (U,i)
+c = lambda u,i: i < 10
+b = lambda u,i: (o1,tf.add(i,1))
+l = tf.while_loop(c,b,vars)
+"""
                 
 
 

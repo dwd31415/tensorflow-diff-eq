@@ -9,8 +9,8 @@ eq = diff_eq.DifferentialEquation()
 (x, k, m) = eq.generate_quantities(3)
 
 # Define these quantities
-eq.define_quantity(k, 3.0, 0, 1)(0)
-eq.define_quantity(m, 0.7, 0, 1)(0)
+eq.define_quantity(k, 3.0, 0, 1)(0.0)
+eq.define_quantity(m, 0.7, 0, 1)(0.0)
 
 # The actual equation
 eq.define_quantity(x, 1.0, 1, 2)(-k.d(0)*x.d(0)/m.d(0))
