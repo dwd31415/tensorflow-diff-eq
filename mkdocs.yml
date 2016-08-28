@@ -1,8 +1,24 @@
 site_name: Differential Equations for TensorFlow
 theme: 'material'
 
+copyright: Copyright (c) 2016 Adrian Philipp Dawid
+
 repo_name: 'GitHub'
 repo_url: 'https://github.com/dwd31415/tensorflow-diff-eq'
 
+extra_javascript:
+    - http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+
+markdown_extensions:
+    - mdx_math
+    - admonition
+    - codehilite(css_class=code)
+
 extra:
   logo: 'images/icon.png'
+  author:
+    github: 'dwd31415'
+    twitter: 'adrian_dwd'
+
+pages:
+  - Home: index.md
