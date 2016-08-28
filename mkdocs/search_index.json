@@ -1,0 +1,14 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Welcome to tensorflow-diff-eq",
+            "title": "Home"
+        },
+        {
+            "location": "/#welcome-to-tensorflow-diff-eq",
+            "text": "",
+            "title": "Welcome to tensorflow-diff-eq"
+        }
+    ]
+}
