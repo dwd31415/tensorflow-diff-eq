@@ -2,13 +2,18 @@
     "docs": [
         {
             "location": "/",
-            "text": "Welcome to tensorflow-diff-eq",
+            "text": "Welcome to tensorflow-diff-eq\n\n\nA python package for simulating differential equations using TensorFlow.\n\n\n\nInstallation\n\n\nThis package is still in an early stage of development, therefore it is not yet \navailable from PyPI. To install it, just clone this repository and run:\n\n\npython3 setup.py install",
             "title": "Home"
         },
         {
             "location": "/#welcome-to-tensorflow-diff-eq",
-            "text": "",
+            "text": "A python package for simulating differential equations using TensorFlow.",
             "title": "Welcome to tensorflow-diff-eq"
+        },
+        {
+            "location": "/#installation",
+            "text": "This package is still in an early stage of development, therefore it is not yet \navailable from PyPI. To install it, just clone this repository and run:  python3 setup.py install",
+            "title": "Installation"
         }
     ]
 }
