@@ -1,8 +1,10 @@
 # Welcome to tensorflow-diff-eq
 A python package for simulating differential equations using [TensorFlow](https://www.tensorflow.org/).
-# Why TensorFlow?
-[TensorFlow](https://www.tensorflow.org/) is an open source library for numerical computation(mostly in machine learning), that allows one to specify computations using abstract dataflow graphs. The library then runs them on the GPU or CPU, this makes TensorFlow great for simulating differential equations. GPUs can perform many computation much faster than CPUs, using this library one can harness this performance for simulating differential equations. The simulation can run on the GPU or the CPU without any change in code. 
+
 ![Lorenz Attractor](https://github.com/dwd31415/tensorflow-diff-eq/blob/master/examples/lorenz_attractor_animated.gif?raw=true)
+## Why TensorFlow?
+[TensorFlow](https://www.tensorflow.org/) is an open source library for numerical computation(mostly in machine learning), that allows one to specify computations using abstract dataflow graphs. The library then runs them on the GPU or CPU, this makes TensorFlow great for simulating differential equations. GPUs can perform many computation much faster than CPUs, using this library one can harness this performance for simulating differential equations. The simulation can run on the GPU or the CPU without any change in code.
+
 ## Installation
 This package is still in an early stage of development, therefore it is not yet
 available from PyPI. To install it, just clone this repository and run:
