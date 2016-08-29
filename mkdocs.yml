@@ -22,3 +22,4 @@ extra:
 
 pages:
   - Home: index.md
+  - Optimizing your Simulations: optim.md
