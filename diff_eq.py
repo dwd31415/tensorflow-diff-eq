@@ -2,8 +2,8 @@ import tensorflow as tf
 import numpy as np
 
 
-class DifferentialQuantity():
-    def __init__(self,id,eq):
+class DifferentialQuantity(object):
+    def __init__(self, id, eq):
         self.id = id
         self.eq = eq
         self.is_defined = False
@@ -21,12 +21,12 @@ class DifferentialQuantity():
     def get_id(self):
         return self.id
 
-    def define(self,derivatives):
+    def define(self, derivatives):
         self.derivatives = derivatives
         self.is_defined = True
 
 
-class DifferentialEquation():
+class DifferentialEquation(object):
     def __init__(self):
         self.quantities = []
 
@@ -37,6 +37,33 @@ class DifferentialEquation():
             new_quantities.append(x)
             self.quantities.append(x)
         return new_quantities
+
+    def prepare_quantity_for_recursive_definition(self,quantity, initial_value, initial_value_order, definition_order):
+        if not quantity.eq == self:
+            raise Exception("The supplied quantity is not part of this differential equation.")
+
+        if quantity.is_defined:
+            raise Exception("The quantity is already defined.")
+
+        if initial_value_order >= definition_order:
+            raise Exception("The initial value has to be assigned to a lower-order derivative than is being defined.")
+        derivatives = []
+        for n in range(definition_order):
+            dx = None
+            if n == initial_value_order:
+                dx = tf.Variable(np.reshape(initial_value, np.size(initial_value)), dtype="float64")
+            else:
+                dx = tf.Variable(np.zeros(np.size(initial_value)))
+            derivatives.append(dx)
+        quantity.define(derivatives)
+
+    def define_quantity_recursively(self, quantity, definition):
+        if not quantity.eq == self:
+            raise Exception("The supplied quantity is not part of this differential equation.")
+
+        derivatives = quantity.derivatives
+        derivatives.append(definition)
+        quantity.define(derivatives)
 
     def define_quantity(self, quantity, initial_value, initial_value_order, definition_order):
         if not quantity.eq == self:

@@ -9,7 +9,9 @@ A python package for simulating differential equations using [TensorFlow](https:
 This package is still in an early stage of development, therefore it is not yet
 available from PyPI. To install it, just clone this repository and run:
 
-`python3 setup.py install`
+```
+python3 setup.py install
+```
 
 ## Basic Usage
 
