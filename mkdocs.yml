@@ -7,12 +7,16 @@ repo_name: 'GitHub'
 repo_url: 'https://github.com/dwd31415/tensorflow-diff-eq'
 
 extra_javascript:
-    - http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+    - https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 markdown_extensions:
     - mdx_math
     - admonition
     - codehilite(css_class=code)
+
+google_analytics:
+  - 'UA-63855905-4'
+  - 'auto'
 
 extra:
   logo: 'images/icon.png'
