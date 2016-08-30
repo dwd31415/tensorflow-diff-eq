@@ -1,9 +1,6 @@
 import tensorflow_diff_eq.diff_eq as diff_eq
 import tensorflow as tf
 import numpy as np
-import matplotlib as mpl
-from mpl_toolkits.mplot3d import Axes3D
-import numpy as np
 import matplotlib.pyplot as plt
 import tqdm
 
@@ -27,7 +24,7 @@ eq.define_quantity_recursively(z, x.d(0)*y.d(0) - z.d(0)*beta)
 # Start tensorflow
 sess = tf.Session()
 sess.run(tf.initialize_all_variables())
-simulate_op = eq.generate_simulate_operation(0.005,0)
+simulate_op = eq.generate_simulate_operation(0.005)
 
 N = 2000
 xs = np.zeros(N)

@@ -87,7 +87,7 @@ class DifferentialEquation(object):
 
         return define_op
 
-    def generate_simulate_operation(self, dt, steps=0):
+    def generate_simulate_operation(self, dt):
         # Are all quantities defined?
         for quantity in self.quantities:
             if not quantity.is_defined:

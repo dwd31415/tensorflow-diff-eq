@@ -24,7 +24,7 @@ eq.define_quantity(xyz,np.array([2.1, 3.2, 4.4]), 0, 1)(tf.pack([sigma * (xyz.d(
 # Start tensorflow
 sess = tf.Session()
 sess.run(tf.initialize_all_variables())
-simulate_op = eq.generate_simulate_operation(0.005,0)
+simulate_op = eq.generate_simulate_operation(0.005)
 
 xs = np.zeros(2000)
 ys = np.zeros(2000)

@@ -22,11 +22,11 @@ simulate_op = eq.generate_simulate_operation(0.005)
 
 
 # Simulate and record values
-xs = np.zeros(2000)
-ts = np.zeros(2000)
-for i in range(2000):
+xs = np.zeros(5000)
+ts = np.zeros(5000)
+for i in range(5000):
     xs[i] = sess.run(x.d(0))
-    if i < 1999:
+    if i < 4999:
         sess.run(simulate_op)
         sess.run(simulate_op)
         ts[i+1] = ts[i] + 0.01
