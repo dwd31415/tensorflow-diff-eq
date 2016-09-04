@@ -1,5 +1,5 @@
 # Welcome to tensorflow-diff-eq
-A python package for simulating differential equations using [TensorFlow](https://www.tensorflow.org/).
+A python package for simulating differential equations using [TensorFlow](https://www.tensorflow.org/). 
 
 ![Lorenz Attractor](https://github.com/dwd31415/tensorflow-diff-eq/blob/master/examples/lorenz_attractor_animated.gif?raw=true)
 ## Why TensorFlow?
@@ -28,6 +28,9 @@ object:
 ``` python3
 eq = diff_eq.DifferentialEquation()
 ```
+!!! warning
+    Partial differential equations are currently not supported (but I am working on it and contributions are always welcome).
+
 Then you must specify how many quantities will be involved in your differential equation.
 ### Example:
 ``` python3

@@ -6,9 +6,9 @@ increases the performance of your code.
 ###Example (Three different scalar quantities):
 ``` python
 (x,y,z) = eq.generate_quantities(3)
-eq.prepare_quantity_for_recursive(x, 4.0, 0, 1)
-eq.prepare_quantity_for_recursive(y, 2.0, 0, 1)
-eq.prepare_quantity_for_recursive(z, 3.0, 0, 1)
+eq.prepare_quantity_for_recursive_definition(x, 4.0, 0, 1)
+eq.prepare_quantity_for_recursive_definition(y, 2.0, 0, 1)
+eq.prepare_quantity_for_recursive_definition(z, 3.0, 0, 1)
 eq.define_quantity_recursively(x, sigma * (y.d(0)-x.d(0)))
 eq.define_quantity_recursively(y, x.d(0)*(rho - z.d(0))-y.d(0))
 eq.define_quantity_recursively(z, x.d(0)*y.d(0) - z.d(0)*beta)
