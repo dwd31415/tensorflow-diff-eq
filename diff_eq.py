@@ -99,18 +99,3 @@ class DifferentialEquation(object):
                 updates.append(quantity.derivatives[n].assign(quantity.derivatives[n] + dt * (quantity.derivatives[n + 1])))
         updates_combined = tf.tuple(updates)
         return updates_combined
-
-"""
-U = tf.Variable(0.0)
-o1 = U.assign_add(tf.exp(-U))
-i = tf.constant(0)
-vars = (U,i)
-c = lambda u,i: i < 10
-b = lambda u,i: (o1,tf.add(i,1))
-l = tf.while_loop(c,b,vars)
-"""
-                
-
-
-
-

@@ -1,7 +1,7 @@
 site_name: Differential Equations for TensorFlow
 theme: 'material'
 
-copyright: Copyright (c) 2016 Adrian Philipp Dawid
+copyright: Copyright (c) 2016 Adrian Philipp Dawid <br> TensorFlow, the TensorFlow logo and any related marks are trademarks of Google Inc. <br>
 
 repo_name: 'GitHub'
 repo_url: 'https://github.com/dwd31415/tensorflow-diff-eq'
