@@ -14,5 +14,7 @@ Two simple examples, the classic harmonic oscillator and the Lorenz Attractor ar
  
 # Documentation
 The documentation for this package is hosted [here](https://dwd31415.github.io/tensorflow-diff-eq/).
+If you want to learn more about differential equations themself, I would recommend this [MIT OCW Course.](https://youtu.be/ZvL88xqYSak?list=PLUl4u3cNGP63oTpyxCMLKt_JmB0WtSZfG)
     
-   
+    
+TensorFlow, the TensorFlow logo and any related marks are trademarks of Google Inc.
