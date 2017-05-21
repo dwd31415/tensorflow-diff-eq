@@ -2,7 +2,7 @@ import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 import tqdm
-import diff_eq as diff_eq
+import tensorflow_diff_eq.diff_eq as diff_eq
 
 
 # xdot = c(xdot + ydot - (xdot**3/3) + i)
