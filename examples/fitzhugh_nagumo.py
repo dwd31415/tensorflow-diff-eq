@@ -49,5 +49,7 @@ if __name__ == '__main__':
     fig = plt.figure()
     plt.plot(ts, xs)
     plt.title('Fitzhugh-Nagumo Neuron')
+    plt.xlabel('Time (ms)')
+    plt.ylabel('Membrane Potential')
     plt.legend()
     plt.show()
